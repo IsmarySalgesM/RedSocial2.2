@@ -1,56 +1,61 @@
 import React, { Component } from 'react';
-// import firebase from 'firebase';
-
 import '../wall/wall.css'
+import { Input, Button, Card } from 'react-materialize';
+// import firebase from 'firebase';
 
 class Wall extends Component {
   constructor() {
     super();
-    this.state = { //guarda los elementos
-      items: []
+    this.state = {
+      index : '',
+      wall: []
     }
-    console.log(this.state)
-    this.addComment = this.addComment.bind(this);
+    this.btnPublic = this.btnPublic.bind(this)
   }
+
+  // componentDidMount() {
+  //   this.refs.publish.focus();
+  // }
+
+  btnPublic(e) {
+    e.preventDefault()
+
+    let wall = this.state.wall;
+    let publishWall = this.refs.publish.value;
+    console.log(publishWall)
+
+    
+    let dataPublish = {
+      publishWall
+    }
+
+    wall.push(dataPublish);
+
+    this.setState({ wall });
+  }
+
   render() {
+    let wall = this.state.wall;
     return (
       <div>
-        <div>
-          <form onSubmit={this.addComment}>
-            <input placeholder="comment..." ref={(input) => this.textInput = input}/>
-            <button type="submit">Enviar</button>
+        <Card className='CardRegister' textClassName='black-text'>
+          <form>
+            <Input s={10} placeholder="Hola WelcomLovers!!" ref="publish" type="text" />
+            <div className='center-align'>
+              <Button onClick={this.btnPublic}>Publicar</Button>
+            </div>
           </form>
-        </div>
+        </Card>
+        <pre>
+          {wall.map((walls, i) =>
+            <Card className='red' key ={i} textClassName='black-text'>
+              {walls.publish}
+              <h6>holi</h6>
+            </Card>
+          )}
+        </pre>
       </div>
     )
-  };
-  //donde se recibe el evento
-  addComment(event) {
-    event.preventDefault();
-    if (this.textInput.value === '') {
-      return;
-    }
-
-    let newItem = {
-      text: this.textInput.value,
-      key: Date.now()
-    }
-
-    this.setState((previousState) => {
-      return {
-        items: previousState.items.concat(newItem),
-      }
-    })
-    //referencia al input
-    this.textInput.value = '';
-    console.log(this.state.items)
-    
-    //referencia al fichero en firebase
-    //const post = event.target.file[0]
-    //const storageRef = firebase.storage().ref(menssageWall/${post.name})
-    
   }
-    
-};
-
+}
 export default Wall;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Wall from '../wall/wall'
 import Navbar from '../navbar/navbar'
 //import fire from '../config/fire';
 
@@ -17,6 +18,7 @@ class Home extends Component {
         return (
             <div>
                <Navbar />
+               <Wall />
             
             </div>
         );
