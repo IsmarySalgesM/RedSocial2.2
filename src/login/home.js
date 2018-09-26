@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Wall from '../wall/wall'
 import Navbar from '../navbar/navbar'
+import ImagenWall from '../wall/imagenWall';
+
 //import fire from '../config/fire';
 
 class Home extends Component {
@@ -18,8 +20,7 @@ class Home extends Component {
         return (
             <div>
                <Navbar />
-               <Wall />
-            
+               <Wall />          
             </div>
         );
 
