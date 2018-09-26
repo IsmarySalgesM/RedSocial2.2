@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import '../wall/wall.css'
-import { Input, Button, Card } from 'react-materialize';
+import { Input, Button, Card ,Icon } from 'react-materialize';
+import Contador from './contador';
 // import firebase from 'firebase';
 
 class Wall extends Component {
   constructor() {
     super();
     this.state = {
-      index : '',
       inputVal : '',
+      act :0,
+      index :'',
       wall: []
     }
     this.btnPublic = this.btnPublic.bind(this)
   }
 
-   btnPublic(e) {
+  // componentDidMount() {
+  //   this.refs.publish.focus();
+  // }
+
+  btnPublic(e) {
     e.preventDefault()
 
     let wall = this.state.wall;
@@ -37,21 +43,17 @@ class Wall extends Component {
       ...this.state,
       [name] : event.target.value
     });
-
-    console.log("Holi > "+event.target.value);
   }
 
-  Edit(i){
-    console.log('click')
-    let wall = this.state.wall[i];
-    console.log(wall)
-    this.publishWall = wall.inputVal
-    console.log(wall.inputVal);
+  Delete(i){
+    console.log('hey')
+    let wall = this.state.wall;
+    wall.splice(i,1);
     this.setState({
-      act :1,
-      index: i
+      wall: wall
     })
   }
+
   render() {
     let wall = this.state.wall;
     return (
@@ -68,6 +70,15 @@ class Wall extends Component {
           {wall.map((walls, i) =>
             <Card className='red' key ={i} textClassName='black-text'>
               {walls.publishWall}
+              <div>
+              <Contador/>
+              </div>
+              <div>
+              <a onClick={()=> this.Delete(i)}><Icon>delete</Icon></a>
+              </div>
+              <div>
+              <a onClick={()=> this.Edit(i)}><Icon>border_color</Icon></a>
+              </div>
             </Card>
           )}
         </pre>
