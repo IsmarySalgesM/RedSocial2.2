@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import '../wall/wall.css'
 import { Input, Button, Card } from 'react-materialize';
+import Contador from './contador';
 // import firebase from 'firebase';
 
 class Wall extends Component {
   constructor() {
     super();
     this.state = {
-      index : '',
       inputVal : '',
       wall: []
     }
@@ -41,8 +41,6 @@ class Wall extends Component {
       ...this.state,
       [name] : event.target.value
     });
-
-    console.log("Holi > "+event.target.value);
   }
 
   render() {
@@ -61,6 +59,7 @@ class Wall extends Component {
           {wall.map((walls, i) =>
             <Card className='red' key ={i} textClassName='black-text'>
               {walls.publishWall}
+              <Contador/>
             </Card>
           )}
         </pre>
