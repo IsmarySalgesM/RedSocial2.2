@@ -8,6 +8,7 @@ class Wall extends Component {
     super();
     this.state = {
       index : '',
+      inputVal : '',
       wall: []
     }
     this.btnPublic = this.btnPublic.bind(this)
@@ -21,17 +22,27 @@ class Wall extends Component {
     e.preventDefault()
 
     let wall = this.state.wall;
-    let publishWall = this.refs.publish.value;
+    let publishWall = this.state.inputVal;
     console.log(publishWall)
 
     
     let dataPublish = {
-      publishWall
+      publishWall : publishWall
     }
 
-    wall.push(dataPublish);
+    this.setState({
+      ...this.state, //copiar el estado ... al nuevo objeto
+      wall : this.state.wall.concat(dataPublish)
+    });
+  }
 
-    this.setState({ wall });
+  onChange(name, event){
+    this.setState({
+      ...this.state,
+      [name] : event.target.value
+    });
+
+    console.log("Holi > "+event.target.value);
   }
 
   render() {
@@ -40,7 +51,7 @@ class Wall extends Component {
       <div>
         <Card className='CardRegister' textClassName='black-text'>
           <form>
-            <Input s={10} placeholder="Hola WelcomLovers!!" ref="publish" type="text" />
+            <Input s={10} placeholder="Hola WelcomLovers!!"  onChange={e=>this.onChange("inputVal", e)} type="text" />
             <div className='center-align'>
               <Button onClick={this.btnPublic}>Publicar</Button>
             </div>
@@ -49,8 +60,7 @@ class Wall extends Component {
         <pre>
           {wall.map((walls, i) =>
             <Card className='red' key ={i} textClassName='black-text'>
-              {walls.publish}
-              <h6>holi</h6>
+              {walls.publishWall}
             </Card>
           )}
         </pre>
