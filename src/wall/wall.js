@@ -16,11 +16,7 @@ class Wall extends Component {
     this.btnPublic = this.btnPublic.bind(this)
   }
 
-  // componentDidMount() {
-  //   this.refs.publish.focus();
-  // }
-
-  btnPublic(e) {
+   btnPublic(e) {
     e.preventDefault()
 
     let wall = this.state.wall;
@@ -54,6 +50,17 @@ class Wall extends Component {
     })
   }
 
+  Edit(i){
+    console.log('click')
+    let wall = this.state.wall[i];
+    console.log(wall)
+    this.publishWall = wall.inputVal
+    console.log(wall.inputVal);
+    this.setState({
+      act :1,
+      index: i
+    })
+  }
   render() {
     let wall = this.state.wall;
     return (
