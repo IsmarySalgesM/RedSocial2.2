@@ -9,7 +9,7 @@ class Contador extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="iconContador">
                 <p>{this.state.contador}
                     <a onClick={this.contadorLikes.bind(this)}><Icon>public</Icon> </a>
                 </p>

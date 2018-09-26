@@ -1,0 +1,27 @@
+body{
+ background-color: #009688;
+}
+.cardWall{
+    background-color: #bff0ec;
+}
+
+.iconDelete{
+position: absolute;
+right: 10%;
+
+}
+
+.iconEdit{
+  position: absolute;
+  right: 20%;  
+}
+.iconContador{
+    position: absolute;
+    right: 30%;  
+}
+
+.logoImagenWall{
+    width: 20%;
+    height: 20%;
+   border-radius: 35px
+}
