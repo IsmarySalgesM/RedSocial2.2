@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../wall/wall.css'
-import { Input, Button, Card } from 'react-materialize';
+import { Input, Button, Card ,Icon } from 'react-materialize';
 import Contador from './contador';
 // import firebase from 'firebase';
 
@@ -9,6 +9,8 @@ class Wall extends Component {
     super();
     this.state = {
       inputVal : '',
+      act :0,
+      index :'',
       wall: []
     }
     this.btnPublic = this.btnPublic.bind(this)
@@ -43,6 +45,15 @@ class Wall extends Component {
     });
   }
 
+  Delete(i){
+    console.log('hey')
+    let wall = this.state.wall;
+    wall.splice(i,1);
+    this.setState({
+      wall: wall
+    })
+  }
+
   render() {
     let wall = this.state.wall;
     return (
@@ -59,7 +70,15 @@ class Wall extends Component {
           {wall.map((walls, i) =>
             <Card className='red' key ={i} textClassName='black-text'>
               {walls.publishWall}
+              <div>
               <Contador/>
+              </div>
+              <div>
+              <a onClick={()=> this.Delete(i)}><Icon>delete</Icon></a>
+              </div>
+              <div>
+              <a onClick={()=> this.Edit(i)}><Icon>border_color</Icon></a>
+              </div>
             </Card>
           )}
         </pre>
