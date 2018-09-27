@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../login/login';
-import logoWall from '/home/laboratoria/again-red/src/img/pexels-photo-1068523.jpeg';
+import logoWall from '../img/architecture-cityscape-cityview-34166.jpg';
 class ImagenWall extends Component {
 
   render() {
