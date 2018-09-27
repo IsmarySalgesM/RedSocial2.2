@@ -1,33 +1,30 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import fire from '../config/fire'
 import '../navbar/navbar.css'
-import { Navbar, NavLink, Button } from 'react-materialize'
-import Logo from '../login/logo';
-import Logout from '../login/logOut'
+import {Navbar,NavItem} from 'react-materialize';
 
-import Wall from '../wall/wall';
-import Profile from '../profile/profile';
+class Navegation extends Component {
+  constructor() {
+    super()
+    this.logout = this.logout.bind(this);
+  }
 
+  logout() {
+    fire.auth().signOut();
+   console.log('click');
+ }
 
+  render() {
+    return (
+      <div>
+        <Navbar brand='' right>
+          <NavItem  href={process.env.PUBLIC_URL + '/Wall'}>Muro</NavItem >
+          <NavItem  href={process.env.PUBLIC_URL + '/Profile'}>Perfil</NavItem >
+          <NavItem  onClick={(this.logout)}>Cerrar Sesión</NavItem >
+        </Navbar>
 
-const Navegation = () => {
-  return (
-    <div>
-      <Navbar brand='' right>
-        <a href="#!" class="brand-logo sizeLogo"><Logo/></a>
-        <br></br>
-        <NavLink href=''>Muro</NavLink>
-        <NavLink href='../profile/profile.js'>Perfil</NavLink>
-        <NavLink onClick={(this.logout)}>Cerrar Sesión</NavLink>
-      
-      </Navbar>
-    
-    </div>
-  )
-};
-
-
-
-
+      </div>
+    )
+  }
+}
 export default Navegation;

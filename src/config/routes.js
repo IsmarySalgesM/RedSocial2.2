@@ -1,3 +1,3 @@
-export const USER = '/';
-export const WALL = '/wall';
-export const PROFILE = '/profile';
+// export const USER = '/';
+// export const WALL = 'Wall';
+// export const PROFILE = '/Profile';

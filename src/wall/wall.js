@@ -3,6 +3,7 @@ import '../wall/wall.css'
 import { Input, Button, Card, Icon } from 'react-materialize';
 import Contador from './contador';
 import ImagenWall from './imagenWall'
+import Navegation from '../navbar/Navigation'
 // import firebase from 'firebase';
 
 class Wall extends Component {
@@ -58,33 +59,35 @@ class Wall extends Component {
   render() {
     let wall = this.state.wall;
     return (
-
-      <div className='wallUser'>
-        <Card className='CardRegister' textClassName='black-text'>
-          <p><ImagenWall/> Hola, Maria! Bienvenida</p>
-          <form>
-            <Input s={10} placeholder="Hola WelcomLovers!!" onChange={e => this.onChange("inputVal", e)} type="text" />
-            <div className='center-align'>
-              <Button onClick={this.btnPublic}>Publicar</Button>
-            </div>
-          </form>
-        </Card>
-        <pre>
-          {wall.map((walls, i) =>
-            <Card className='cardWall' key={i} textClassName='black-text'>
-              <h6>{walls.publishWall}</h6>
-              <div>
-                <Contador />
+      <div>
+        <Navegation />
+        <div className='wallUser'>
+          <Card className='CardRegister' textClassName='black-text'>
+            <p><ImagenWall /> Hola, Maria! Bienvenida</p>
+            <form>
+              <Input s={10} placeholder="Hola WelcomLovers!!" onChange={e => this.onChange("inputVal", e)} type="text" />
+              <div className='center-align'>
+                <Button onClick={this.btnPublic}>Publicar</Button>
               </div>
-              <div className="iconDelete">
-                <a onClick={() => this.Delete(i)}><Icon>delete</Icon></a>
-              </div>
-              <div className="iconEdit">
-                <a onClick={() => this.Edit(i)}><Icon>border_color</Icon></a>
-              </div>
-            </Card>
-          )}
-        </pre>
+            </form>
+          </Card>
+          <pre>
+            {wall.map((walls, i) =>
+              <Card className='cardWall' key={i} textClassName='black-text'>
+                <h6>{walls.publishWall}</h6>
+                <div>
+                  <Contador />
+                </div>
+                <div className="iconDelete">
+                  <a onClick={() => this.Delete(i)}><Icon>delete</Icon></a>
+                </div>
+                <div className="iconEdit">
+                  <a onClick={() => this.Edit(i)}><Icon>border_color</Icon></a>
+                </div>
+              </Card>
+            )}
+          </pre>
+        </div>
       </div>
     )
   }
