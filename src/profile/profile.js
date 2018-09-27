@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import '/home/laboratoria/again-red/src/profile/profile.css';
-import logoU from '/home/laboratoria/again-red/src/img/WhatsApp Image 2018-09-27 at 10.52.33.jpeg'
+import './profile.css';
+import logoU from '../img/WhatsApp Image 2018-09-27 at 10.52.33.jpeg'
 import { Card, Icon } from 'react-materialize';
 
 class Profile extends Component {
